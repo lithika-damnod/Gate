@@ -1,6 +1,6 @@
 <h1>
   <p>
-    <img src="https://github.com/user-attachments/assets/53ab3436-c623-4527-9ff0-ee3bc0473ee6" align="left" alt="Gate Application Main Logo" width="110">
+    <img src="https://github.com/user-attachments/assets/75091aa2-cff0-485d-acaa-1477373793ff" align="left" alt="Gate Application Main Logo" width="110">
   </p>
   <p>
     <img src="https://img.shields.io/badge/status-active-brightgreen">
