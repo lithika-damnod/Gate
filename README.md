@@ -10,6 +10,5 @@
   </p>
 </h1>
 
-<img src="https://github.com/user-attachments/assets/f8cde272-8f22-425d-9e00-01039be93e07" alt="Gate Application Icon" width="130" align="right"></a>
  >```This project is a real-time event ticketing system with an advanced producer-consumer implementation that makes organizing and attending events easy. Administrators get a main dashboard to manage vendors, keep track of event details, and monitor ticket sales. Users can easily browse events, see details, and buy tickets safely. The system is built to make events simple—helping admins stay organized and giving users a smooth ticket-buying experience.```
 <br>
