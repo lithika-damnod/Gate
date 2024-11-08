@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.DTO.AccountDTO;
 import com.example.backend.models.Account;
 import com.example.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,17 @@ public class AccountController {
 
 
     @GetMapping
-    public List<Account> getAccount() {
+    public List<AccountDTO> getAccount() {
         return accountService.getAccount();
     }
 
     @GetMapping("{id}")
-    public Account getAccount(@PathVariable("id") Integer id) {
+    public AccountDTO getAccount(@PathVariable("id") Integer id) {
         return accountService.getAccount(id);
     }
 
     @PutMapping("{id}")
-    public Account putAccount(@PathVariable("id") Integer id, @RequestBody Account account) {
+    public AccountDTO putAccount(@PathVariable("id") Integer id, @RequestBody Account account) {
         return accountService.updateAccount(id, account.getEmail(), account.getFirstName(), account.getLastName(), account.getPassword());
     }
 
