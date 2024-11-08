@@ -24,8 +24,8 @@ public class AccountConfig {
     // TODO: For Testing Purposes Only
     @PostConstruct
     public void initData() {
-        Account account1 = new Account("example@example.com", "password1", "firstname1", "lastname1");
-        Account account2 = new Account("example@example.com", "password2", "firstname2", "lastname2");
+        Account account1 = new Account(null, "example@example.com", "password1", "firstname1", "lastname1");
+        Account account2 = new Account(null, "example@example.com", "password2", "firstname2", "lastname2");
         accountRepository.saveAll(List.of(account1, account2));
     }
 }
