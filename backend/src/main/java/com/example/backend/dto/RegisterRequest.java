@@ -1,4 +1,4 @@
-package com.example.backend.DTO;
+package com.example.backend.dto;
 
 import com.example.backend.models.Account;
 import lombok.*;

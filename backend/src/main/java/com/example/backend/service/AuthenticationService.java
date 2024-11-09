@@ -1,8 +1,8 @@
 package com.example.backend.service;
 
-import com.example.backend.DTO.AuthenticationRequest;
-import com.example.backend.DTO.AuthenticationResponse;
-import com.example.backend.DTO.RegisterRequest;
+import com.example.backend.dto.AuthenticationRequest;
+import com.example.backend.dto.AuthenticationResponse;
+import com.example.backend.dto.RegisterRequest;
 import com.example.backend.models.Account;
 import com.example.backend.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;

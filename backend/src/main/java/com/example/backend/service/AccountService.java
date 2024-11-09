@@ -1,7 +1,7 @@
 package com.example.backend.service;
 
-import com.example.backend.DTO.AccountDTO;
-import com.example.backend.DTO.AccountDTOMapper;
+import com.example.backend.dto.AccountDTO;
+import com.example.backend.dto.AccountDTOMapper;
 import com.example.backend.models.Account;
 import com.example.backend.repository.AccountRepository;
 import jakarta.persistence.EntityNotFoundException;

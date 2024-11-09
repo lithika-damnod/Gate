@@ -1,8 +1,8 @@
 package com.example.backend.controller;
 
-import com.example.backend.DTO.AuthenticationRequest;
-import com.example.backend.DTO.AuthenticationResponse;
-import com.example.backend.DTO.RegisterRequest;
+import com.example.backend.dto.AuthenticationRequest;
+import com.example.backend.dto.AuthenticationResponse;
+import com.example.backend.dto.RegisterRequest;
 import com.example.backend.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

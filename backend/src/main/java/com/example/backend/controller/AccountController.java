@@ -1,6 +1,6 @@
 package com.example.backend.controller;
 
-import com.example.backend.DTO.AccountDTO;
+import com.example.backend.dto.AccountDTO;
 import com.example.backend.models.Account;
 import com.example.backend.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
