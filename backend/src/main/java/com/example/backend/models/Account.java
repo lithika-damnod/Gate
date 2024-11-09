@@ -29,7 +29,7 @@ public class Account implements UserDetails {
             generator = "account_sequence"
     )
     private Integer id;
-    private String email;
+    @Column(unique = true) private String email;
     private String firstName;
     private String lastName;
     private String password;
