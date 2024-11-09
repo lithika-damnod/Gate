@@ -29,7 +29,6 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
 
-        // TODO: DO SOME CHECKS HERE...
         // save the account
         Account account = request.map(passwordEncoder.encode(request.getPassword()));
         accountRepository.save(account);
