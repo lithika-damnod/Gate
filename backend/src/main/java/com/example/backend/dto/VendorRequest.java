@@ -23,6 +23,6 @@ public class VendorRequest {
     private String address;
 
     public Vendor map() {
-        return new Vendor(null, name, address);
+        return new Vendor(null, name, address, null);
     }
 }
