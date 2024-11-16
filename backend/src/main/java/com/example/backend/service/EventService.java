@@ -41,6 +41,13 @@ public class EventService {
         return eventRepository.save(event).toResponse();
     }
 
+    public void deleteEvent(Integer id) {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
+
+        eventRepository.delete(event);
+    }
+
     private Event map(EventRequest request) {
         Event event = Event.builder()
                 .name(request.getName()) // TODO: Handle Duplicate Event Creation Here

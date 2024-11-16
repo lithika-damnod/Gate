@@ -28,9 +28,16 @@ public class EventController {
         return ResponseEntity.ok(eventService.getEvent(id));
     }
 
-
     @PostMapping
     public ResponseEntity<EventResponse> addEvent(@RequestBody EventRequest request) {
         return ResponseEntity.ok(eventService.addEvent(request));
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable("id") Integer id) {
+        eventService.deleteEvent(id);
+        return ResponseEntity.noContent().build(); // 204: No Content Status
+    }
+
+
 }
