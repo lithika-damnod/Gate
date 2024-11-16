@@ -4,6 +4,7 @@ import com.example.backend.dto.EventRequest;
 import com.example.backend.dto.EventResponse;
 import com.example.backend.repository.EventRepository;
 import com.example.backend.service.EventService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<EventResponse> addEvent(@RequestBody EventRequest request) {
+    public ResponseEntity<EventResponse> addEvent(@Valid @RequestBody EventRequest request) {
         return ResponseEntity.ok(eventService.addEvent(request));
     }
 
