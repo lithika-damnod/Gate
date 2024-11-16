@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Data
 @Builder
@@ -26,5 +25,7 @@ public class Address {
             generator = "address_sequence"
     )
     private Integer id;
+
+    @Column(unique = true, nullable = false)
     private String address;
 }
