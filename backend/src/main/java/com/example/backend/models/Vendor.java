@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -28,6 +30,10 @@ public class Vendor {
     private Integer id;
     private String name;
     private String address;
+
+    @OneToMany(mappedBy = "vendor")
+    private List<Event> events;
+
 
     public void update(String name, String address) {
         if(name != null) this.name = name;
