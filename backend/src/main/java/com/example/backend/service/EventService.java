@@ -30,6 +30,12 @@ public class EventService {
                 .collect(Collectors.toList());
     }
 
+    public EventResponse getEvent(Integer id) {
+        return eventRepository.findById(id)
+                .map(Event::toResponse)
+                .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
+    }
+
     public EventResponse addEvent(EventRequest request) {
         Event event = map(request);
         return eventRepository.save(event).toResponse();

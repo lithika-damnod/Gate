@@ -23,6 +23,12 @@ public class EventController {
         return ResponseEntity.ok(eventService.getEvent());
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<EventResponse> getEvent(@PathVariable Integer id) {
+        return ResponseEntity.ok(eventService.getEvent(id));
+    }
+
+
     @PostMapping
     public ResponseEntity<EventResponse> addEvent(@RequestBody EventRequest request) {
         return ResponseEntity.ok(eventService.addEvent(request));
