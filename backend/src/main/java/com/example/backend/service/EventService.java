@@ -3,10 +3,7 @@ package com.example.backend.service;
 import com.example.backend.dto.EventRequest;
 import com.example.backend.dto.EventResponse;
 import com.example.backend.models.*;
-import com.example.backend.repository.AddressRepository;
-import com.example.backend.repository.EventRepository;
-import com.example.backend.repository.TagRepository;
-import com.example.backend.repository.VendorRepository;
+import com.example.backend.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +19,7 @@ public class EventService {
     private final VendorRepository vendorRepository;
     private final AddressRepository addressRepository;
     private final TagRepository tagRepository;
+    private final TicketTypeRepository ticketTypeRepository;
 
     public List<EventResponse> getEvent() {
         return eventRepository.findAll()
@@ -70,7 +68,10 @@ public class EventService {
                 .collect(Collectors.toList());
         event.setTags(tags);
 
-        event.setTags(tags);
+        List<TicketType> ticketTypes = request.getTicketTypes().stream()
+                .map(ticketType -> new TicketType(null, ticketType.getType(), ticketType.getPrice()))
+                .toList();
+        event.setTicketTypes(ticketTypes);
 
         return event;
     }

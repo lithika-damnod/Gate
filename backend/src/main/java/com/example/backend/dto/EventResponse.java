@@ -24,9 +24,8 @@ public class EventResponse {
     private Image mainImage;
     private Image coverImage;
     private Category category;
+    private List<TicketTypeDTO> ticketTypes;
     private Status status;
     private VendorDTO vendor;
     private List<String> tags;
 }
-
-
