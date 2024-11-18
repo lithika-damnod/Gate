@@ -21,6 +21,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TicketResponse {
     private UUID id;
+    private String code;
     private EventResponse event;
     private AccountDTO account;
     private TicketType type;

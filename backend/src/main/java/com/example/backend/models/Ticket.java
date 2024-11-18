@@ -22,6 +22,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    @Column(unique  = true, nullable = false)
+    private String code;
+
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
@@ -40,11 +43,13 @@ public class Ticket {
     @PrePersist
     public void prePersist() {
         this.purchasedDate = LocalDateTime.now();
+        this.code = this.id.toString().substring(0, 8).toUpperCase();
     }
 
     public TicketResponse toResponse() {
         return TicketResponse.builder()
                 .id(this.id)
+                .code(this.code)
                 .event(this.event.toResponse())
                 .account(new AccountDTOMapper().apply(this.account))
                 .type(this.type)
