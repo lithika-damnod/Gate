@@ -22,6 +22,11 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.getTicket());
     }
 
+    @GetMapping("{code}")
+    public ResponseEntity<TicketResponse> getTicket(@PathVariable String code) {
+        return ResponseEntity.ok(ticketService.getTicket(code));
+    }
+
     @PostMapping
     public ResponseEntity<TicketResponse> registerTicket(Authentication authentication, @RequestBody TicketRequest request) {
         return ticketService.registerTicket(authentication, request);

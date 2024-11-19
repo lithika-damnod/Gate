@@ -31,6 +31,10 @@ public class TicketService {
         return ticketRepository.findAll().stream().map(Ticket::toResponse).collect(Collectors.toList());
     }
 
+    public TicketResponse getTicket(String code) {
+        return ticketRepository.findByCode(code).map(Ticket::toResponse).orElseThrow(() -> new EntityNotFoundException("Ticket Not Found"));
+    }
+
     public ResponseEntity<TicketResponse> registerTicket(Authentication authentication, TicketRequest request) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
