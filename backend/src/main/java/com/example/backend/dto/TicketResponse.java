@@ -1,12 +1,5 @@
 package com.example.backend.dto;
 
-import com.example.backend.models.Account;
-import com.example.backend.models.Event;
-import com.example.backend.models.TicketType;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,8 +15,8 @@ import java.util.UUID;
 public class TicketResponse {
     private UUID id;
     private String code;
-    private EventResponse event;
-    private AccountDTO account;
-    private TicketType type;
+    private Integer eventId;
+    private Integer accountId;
+    private TicketTypeDTO type;
     private LocalDateTime purchasedDate;
 }

@@ -1,7 +1,7 @@
 package com.example.backend.models;
 
-import com.example.backend.dto.AccountDTOMapper;
 import com.example.backend.dto.TicketResponse;
+import com.example.backend.dto.TicketTypeDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,9 +50,9 @@ public class Ticket {
         return TicketResponse.builder()
                 .id(this.id)
                 .code(this.code)
-                .event(this.event.toResponse())
-                .account(new AccountDTOMapper().apply(this.account))
-                .type(this.type)
+                .eventId(this.event.getId())
+                .accountId(this.account.getId())
+                .type(new TicketTypeDTO(this.type.getType(), this.type.getPrice()))
                 .purchasedDate(this.purchasedDate)
                 .build();
     }
