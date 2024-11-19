@@ -1,6 +1,7 @@
 package com.example.backend.models;
 
 import com.example.backend.dto.EventResponse;
+import com.example.backend.dto.TicketTypeDTO;
 import com.example.backend.dto.VendorDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -54,6 +55,14 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "event_ticket_type",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "ticket_type_id")
+    )
+    private List<TicketType> ticketTypes;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -86,6 +95,7 @@ public class Event {
                 .mainImage(this.mainImage)
                 .coverImage(this.coverImage)
                 .category(this.category)
+                .ticketTypes(this.ticketTypes.stream().map(ticketType -> new TicketTypeDTO(ticketType.type, ticketType.price)).collect(Collectors.toList()))
                 .status(this.status)
                 .tags(this.tags.stream().map(Tag::getName).collect(Collectors.toList()))
                 .build();
