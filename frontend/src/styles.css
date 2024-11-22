@@ -5,10 +5,21 @@
 @tailwind utilities;
 
 
-html, body {
-    margin: 0; 
+html,
+body {
+    margin: 0;
     background-color: black;
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     letter-spacing: 0.035em;
+    overscroll-behavior-y: none;
+    color: white;
+    scroll-behavior: smooth;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
