@@ -69,7 +69,7 @@ public class EventService {
         event.setTags(tags);
 
         List<TicketType> ticketTypes = request.getTicketTypes().stream()
-                .map(ticketType -> new TicketType(null, ticketType.getType(), ticketType.getPrice()))
+                .map(ticketType -> new TicketType(null, ticketType.getType(), ticketType.getPrice(), ticketType.getTotal(), ticketType.getMaxTicketCapacity(), ticketType.getTicketReleaseRate()))
                 .toList();
         event.setTicketTypes(ticketTypes);
 

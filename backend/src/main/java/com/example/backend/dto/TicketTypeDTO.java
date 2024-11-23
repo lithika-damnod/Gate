@@ -12,4 +12,7 @@ import lombok.NoArgsConstructor;
 public class TicketTypeDTO {
     private String type;
     private Integer price;
+    private Integer total;
+    private Integer maxTicketCapacity;
+    private Integer releaseRate;
 }
