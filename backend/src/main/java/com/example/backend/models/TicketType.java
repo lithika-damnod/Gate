@@ -23,7 +23,11 @@ public class TicketType {
             strategy = GenerationType.SEQUENCE,
             generator = "ticket_type_sequence"
     )
-    Integer id;
-    String type;
-    Integer price;
+    private Integer id;
+    private String type;
+    private Integer price;
+    private Integer total;
+    private Integer maxTicketCapacity;
+    private Integer ticketReleaseRate;
+    private Integer numberOfTickets;
 }

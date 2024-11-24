@@ -95,7 +95,7 @@ public class Event {
                 .mainImage(this.mainImage)
                 .coverImage(this.coverImage)
                 .category(this.category)
-                .ticketTypes(this.ticketTypes.stream().map(ticketType -> new TicketTypeDTO(ticketType.type, ticketType.price)).collect(Collectors.toList()))
+                .ticketTypes(this.ticketTypes.stream().map(ticketType -> new TicketTypeDTO(ticketType.getType(), ticketType.getPrice() ,ticketType.getTotal(), ticketType.getMaxTicketCapacity(), ticketType.getTicketReleaseRate(), ticketType.getNumberOfTickets())).collect(Collectors.toList()))
                 .status(this.status)
                 .tags(this.tags.stream().map(Tag::getName).collect(Collectors.toList()))
                 .build();
