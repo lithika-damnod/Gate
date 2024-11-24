@@ -15,4 +15,5 @@ public class TicketTypeDTO {
     private Integer total;
     private Integer maxTicketCapacity;
     private Integer releaseRate;
+    private Integer numberOfTickets;
 }

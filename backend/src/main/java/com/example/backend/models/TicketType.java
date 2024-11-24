@@ -29,4 +29,5 @@ public class TicketType {
     private Integer total;
     private Integer maxTicketCapacity;
     private Integer ticketReleaseRate;
+    private Integer numberOfTickets;
 }
