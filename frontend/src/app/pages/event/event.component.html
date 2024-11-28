@@ -1,1 +1,31 @@
-<p>event works!</p>
+<section class="flex h-[calc(100%-(53.59px))] overflow-y-scroll">
+    <section class="w-[58%] border-r border-[#ffffff30] overflow-y-scroll relative">
+        <section>
+            <app-event-details />
+        </section>
+        <section>
+            <app-ticket-type-list-item name="Standard Admission" price="LKR 3200" [progress]="80" />
+            <app-ticket-type-list-item name="VIP Admission" price="LKR 8350" [progress]="50" />
+            <app-ticket-type-list-item name="Earlybird Tickets" price="LKR 4430" [progress]="55" />
+        </section>
+        <section
+            class="flex justify-between items-center absolute w-full border-t border-[#ffffff30] bottom-0 left-0 bg-black text-[0.83rem] px-7 py-4 font-[480] mb-1">
+            <span class="text-[#ffffff99]">LKR 0.00</span>
+            <button class="flex items-center gap-2 text-[#ffffff45] text-[0.84rem]">
+                <span>
+                    Proceed to Confirmation
+                </span>
+                <span class="scale-[0.8]">
+                    <icon-right-arrow></icon-right-arrow>
+                </span>
+            </button>
+        </section>
+    </section>
+    <section class="w-[40%]">
+        <div class="w-full h-full relative overflow-hidden">
+            <img class="w-full h-full absolute object-cover blur-[30px]"
+                src="https://occ-0-8177-64.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABcoSOi3J6hS6qoRGzoX0gnDWF9LUY6XPp3Axel-9sCPlzs1cg99mNjqkooc6k_OY0pqRtXqAJm5djr6JhIK4LFQT5guc1oIrWNRU.webp" />
+            <div class="absolute w-full h-full bg-black opacity-80"></div>
+        </div>
+    </section>
+</section>
