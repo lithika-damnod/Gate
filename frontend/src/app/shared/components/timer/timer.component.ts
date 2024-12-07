@@ -29,6 +29,7 @@ import { Component, Input } from '@angular/core';
         06 Hours | 24 Minutes | 31 Seconds
     </div>
   `,
+    standalone: false
 })
 export class TimerComponent {
     @Input() size: string = "large";
