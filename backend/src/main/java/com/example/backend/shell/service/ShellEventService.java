@@ -63,13 +63,13 @@ public class ShellEventService {
             System.out.println("-" + "-".repeat(header.length()));
             for (EventResponse event : events) {
                 System.out.printf("%-" +
-                        (Math.max(1, maxWidths[0]) + 1) + "s | %-" +
-                        (Math.max(1, maxWidths[1])) + "s | %-" +
-                        (Math.max(1, maxWidths[2])) + "s | %-" +
-                        (Math.max(1, maxWidths[3])) + "s | %-" +
-                        (Math.max(1, maxWidths[4])) + "s | %-" +
-                        (Math.max(1, maxWidths[5])) + "s | %-" +
-                        (Math.max(1, maxWidths[6]) + 1) + "s\n",
+                                (Math.max(1, maxWidths[0]) + 1) + "s | %-" +
+                                (Math.max(1, maxWidths[1])) + "s | %-" +
+                                (Math.max(1, maxWidths[2])) + "s | %-" +
+                                (Math.max(1, maxWidths[3])) + "s | %-" +
+                                (Math.max(1, maxWidths[4])) + "s | %-" +
+                                (Math.max(1, maxWidths[5])) + "s | %-" +
+                                (Math.max(1, maxWidths[6]) + 1) + "s\n",
                         event.getId(), event.getName(), event.getAddress().getAddress(), event.getTime().toString(), event.getCustomerRetrievalRate().toString(), event.getCategory().toString(), event.getStatus().toString());
             }
         } else {
