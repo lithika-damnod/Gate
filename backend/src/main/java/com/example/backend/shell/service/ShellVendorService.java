@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.backend.util.InputUtils.inputString;
+
 @RequiredArgsConstructor
 @Service
 public class ShellVendorService {
@@ -47,5 +49,19 @@ public class ShellVendorService {
             Vendor vendor = vendorRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entered Id is not valid!"));
             System.out.print(new AttributedString("Id: ", AttributedStyle.BOLD).toAnsi() + vendor.getId() + "\n" + new AttributedString("Vendor Name: ", AttributedStyle.BOLD).toAnsi() + vendor.getName() + "\n" + new AttributedString("Address: ", AttributedStyle.BOLD).toAnsi() + vendor.getAddress() + "\n");
         }
+    }
+
+    public void add() {
+        String name = inputString("Enter Vendor Name: ");
+        String address = inputString("Enter Vendor Address: ");
+
+        Vendor vendor = vendorRepository.save(new Vendor(null, name, address, null));
+
+        System.out.println(new AttributedString("\nVendor Information Summary", AttributedStyle.DEFAULT.underline().bold()).toAnsi());
+        System.out.println(
+                new AttributedString("Id: ", AttributedStyle.BOLD).toAnsi() + vendor.getId() + "\n" +
+                        new AttributedString("Vendor Name: ", AttributedStyle.BOLD).toAnsi() + vendor.getName() + "\n" +
+                        new AttributedString("Address: ", AttributedStyle.BOLD).toAnsi() + vendor.getAddress() + "\n"
+        );
     }
 }
