@@ -21,7 +21,6 @@ import { Component, Input } from '@angular/core';
           <div class="w-full h-full bg-[#f0f2a3b3] flex-shrink"></div>
           <div class="w-full h-full bg-[#f0f2a3b3] flex-shrink"></div>
       </div>
-
     </ng-container>
   `,
 })
