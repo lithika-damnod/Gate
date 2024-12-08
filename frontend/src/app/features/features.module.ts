@@ -8,17 +8,18 @@ import { SecondaryHighlightCardComponent } from './home/secondary-highlight-card
 import { HeroSearchComponent } from './home/hero-search/hero-search.component';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
 import { TicketTypeListItemComponent } from './event/ticket-type-list-item/ticket-type-list-item.component';
+import { InputComponent } from './auth/input/input.component';
 
 
 
 @NgModule({
-  declarations: [HeroSectionComponent, MainHighlightCardComponent, SecondaryHighlightCardComponent, HeroSearchComponent, EventDetailsComponent, TicketTypeListItemComponent],
+  declarations: [HeroSectionComponent, MainHighlightCardComponent, SecondaryHighlightCardComponent, HeroSearchComponent, EventDetailsComponent, TicketTypeListItemComponent, InputComponent],
   imports: [
     CommonModule,
     SharedModule,
     IconsModule
   ],
-  exports: [HeroSectionComponent, MainHighlightCardComponent, SecondaryHighlightCardComponent, HeroSearchComponent, EventDetailsComponent, TicketTypeListItemComponent]
+  exports: [HeroSectionComponent, MainHighlightCardComponent, SecondaryHighlightCardComponent, HeroSearchComponent, EventDetailsComponent, TicketTypeListItemComponent, InputComponent]
 
 })
 export class FeaturesModule { }
