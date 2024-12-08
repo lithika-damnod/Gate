@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AuthComponent {
   View = View;
-  view: View = View.EMAIL;
+  view: View = View.PASSWORD;
   back?: View;
 
   navigateToView(view: View) {
