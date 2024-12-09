@@ -34,12 +34,12 @@ public class EventService {
                 .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
     }
 
-    public EventResponse addEvent(EventRequest request) {
+    public synchronized EventResponse addEvent(EventRequest request) {
         Event event = map(request);
         return eventRepository.save(event).toResponse();
     }
 
-    public void deleteEvent(Integer id) {
+    public synchronized void deleteEvent(Integer id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
 

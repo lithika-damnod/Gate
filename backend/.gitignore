@@ -34,3 +34,4 @@ build/
 
 ### Spring Boot Shell ###
 backend.log
+custom_logs.log
