@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-secondary-highlight-card',
-  template: `
+    selector: 'app-secondary-highlight-card',
+    template: `
         <div
             class="flex justify-between items-center p-4 text-[#ffffffb3] hover:bg-[#ffffff12] transition-colors duration-300 cursor-pointer">
             <div>
@@ -14,5 +14,6 @@ import { Component } from '@angular/core';
             </div>
         </div>
   `,
+    standalone: false
 })
 export class SecondaryHighlightCardComponent { }
