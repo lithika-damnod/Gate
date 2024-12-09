@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Information Polpithigama Institute",
+    "address": "Kurunegala, Sri Lanka",
+    "events": [
+      {
+        "name": "Something Boot Developer Conference",
+        "description": "An exciting conference for developers to learn about the latest in Spring Boot and microservices.",
+        "time": "2025-05-15T10:00:00",
+        "customer_retrieval_rate": 75,
+        "address": "Kurunegala, Sri Lanka",
+        "main_image_path": "file://somewhere",
+        "cover_image_path": "file://somewhere",
+        "category": "MOVIE",
+        "ticket_types": [
+          {
+            "type": "Standard Ticket",
+            "price": 1200,
+            "total": 3000,
+            "max_ticket_capacity": 21,
+            "ticket_release_rate": 30
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Spring Boot",
+          "Java",
+          "Microservices"
+        ]
+      }
+    ]
+  }
+]

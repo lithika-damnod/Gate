@@ -1,7 +1,10 @@
 package com.example.backend.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 @Service
@@ -16,18 +19,21 @@ public class StartupService {
     final String LIGHT_GRAY = "\033[0;37m";
     final String UNDERLINE = "\033[4m";
 
+    final String logFilePath = Paths.get("custom_logs.log").toAbsolutePath().toString();
+    final String initFilePath = Paths.get("init.json").toAbsolutePath().toString();
+
     public void init() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Saving server logs to: " + CYAN + "/Usr/lithika-damnod/something/LOGS.txt" + RESET);
-        System.out.println("Populating server with data from: " + CYAN + "/Usr/lithika-damnod/something/init.json" + RESET);
+        System.out.println("Saving server logs to: " + CYAN + logFilePath + RESET);
+        System.out.println("Populating server with data from: " + CYAN + initFilePath + RESET);
         System.out.println();
         System.out.print("Enter the " + BOLD + "user retrieval rate" + RESET + " for this session " + LIGHT_GRAY + "[default: 50/hr]" + RESET + "\n> ");
         int globalUserRetrievalRate = scanner.nextInt();
         System.out.println();
 
         // Example server details
-        String ipAddress = "192.168.1.100";
-        int port = 8080;
+        String ipAddress = "127.0.01";
+        int port = 4200;
         String status = "Running";
         String version = "v1.0.0";
         String environment = "Development";
