@@ -11,7 +11,7 @@ import { EventComponent } from './pages/event/event.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { FormatDatePipe } from './shared/pipes/format-date.pipe';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +36,19 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule,
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(withInterceptors([
+    (req, next) => {
+      const token = sessionStorage.getItem('accessToken');
+      console.log("token: ", token);
+      if (token) {
+        const authReq = req.clone({
+          headers: req.headers.set('Authorization', `Bearer ${token}`),
+        });
+        return next(authReq);
+      }
+      return next(req);
+    }
+  ]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
