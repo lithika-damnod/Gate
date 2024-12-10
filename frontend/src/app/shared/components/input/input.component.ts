@@ -1,25 +1,30 @@
 import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: false,
   styleUrl: "./input.component.css",
   template: `
-    <ng-container *ngIf="type === 'text'">
+    <ng-container *ngIf="type === 'text'"
+      [formGroup]="form"
+    >
       <input type="text" 
           class="w-[320px] p-2 px-4 border-[1.6px] border-[#ffffff26] bg-black rounded-lg text-[0.85rem] placeholder:text-[#ffffffb3] focus:outline-[#015ECC]"
-          [placeholder]="placeholder" />
+          [placeholder]="placeholder" [formControlName]="formName" />
     </ng-container>
 
     <ng-container *ngIf="type === 'password'">
       <div 
         class="flex justify-between items-center password-input box-border w-[320px] border-[1.6px] border-[#ffffff26] bg-black rounded-lg text-[0.85rem] overflow-hidden"
+        [formGroup]="form"
       >
         <input [type]="passwordSecondaryType" 
-            class="overflow-hidden w-full p-2 px-4 text-[0.85rem] bg-black placeholder:text-[#ffffffb3] border-none outline-none flex-shrink"
-            [placeholder]="placeholder"
-            (input)="onInput($event)"
-            />
+          class="overflow-hidden w-full p-2 px-4 text-[0.85rem] bg-black placeholder:text-[#ffffffb3] border-none outline-none flex-shrink"
+          [placeholder]="placeholder"
+          (input)="onInput($event)"
+          [formControlName]="formName"
+        />
         <button class="w-[28px] h-[24px] scale-75 mr-2" (click)="togglePasswordVisibility()">
           <app-eye [color]="color" /> 
         </button>
@@ -48,6 +53,8 @@ export class InputComponent {
   @Input() type!: "text" | "password";
   @Input() strength?: boolean = false;
   @Input() placeholder!: string;
+  @Input() formName!: string;
+  @Input() form!: FormGroup;
 
   color: string = "white";
   passwordSecondaryType: string = "password";

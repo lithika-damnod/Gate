@@ -14,6 +14,7 @@ import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.compon
 import { provideHttpClient } from '@angular/common/http';
 import { FormatDatePipe } from './shared/pipes/format-date.pipe';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     MainLayoutComponent,
     BlankLayoutComponent,
     FormatDatePipe,
-    CapitalizePipe
+    CapitalizePipe,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
     CoreModule,
     FeaturesModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

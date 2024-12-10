@@ -5,6 +5,7 @@ import { IconsModule } from './components/icons/icons.module';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { TimerComponent, ProgressComponent } from "./index";
 import { InputComponent } from './components/input/input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { InputComponent } from './components/input/input.component';
   imports: [
     CommonModule,
     IconsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   exports: [IconsModule, EventCardComponent, TimerComponent, ProgressComponent, InputComponent]
 })
