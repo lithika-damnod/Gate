@@ -23,8 +23,8 @@ public class AccountController {
 
 
     @GetMapping
-    public List<AccountDTO> getAccount() {
-        return accountService.getAccount();
+    public List<AccountDTO> getAccount(@RequestParam(required = false) String email) {
+        return accountService.getAccount(email);
     }
 
     @GetMapping("{id}")
