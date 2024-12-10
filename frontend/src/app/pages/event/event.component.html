@@ -1,18 +1,21 @@
-<section class="flex h-[calc(100%-(53.59px))] overflow-y-scroll">
-    <section class="w-[58%] border-r border-[#ffffff30] overflow-y-scroll relative">
+<section class="flex justify-between h-[calc(100%-(53.59px))] overflow-y-scroll">
+    <section class="w-full border-r border-[#ffffff30] overflow-y-scroll relative">
         <section>
             <app-event-details [name]="event.name" [category]="event.category | capitalize"
                 [description]="event.description" [venue]="event.address.address" [time]="event.time | formatDate" />
         </section>
         <section>
-            <app-ticket-type-list-item *ngFor="let ticketType of event.ticket_types" [name]="ticketType.type"
-                [price]="ticketType.price"
-                [progress]="(ticketType.number_of_tickets/ticketType.max_ticket_capacity) * 100" />
+            <app-ticket-type-list-item *ngFor="let ticketType of event.ticket_types; let index = index"
+                [name]="ticketType.type" [price]="ticketType.price"
+                [progress]="(ticketType.number_of_tickets/ticketType.max_ticket_capacity) * 100" [key]="index"
+                [onCheckboxChange]="handleChecked" />
         </section>
         <section
             class="flex justify-between items-center absolute w-full border-t border-[#ffffff30] bottom-0 left-0 bg-black text-[0.83rem] px-7 py-4 font-[480] mb-1">
-            <span class="text-[#ffffff99]">LKR 0.00</span>
-            <button class="flex items-center gap-2 text-[#ffffff45] text-[0.84rem]">
+            <span class="text-[#ffffff99]">LKR {{totalPrice}}</span>
+            <button class="flex items-center gap-2 text-[#ffffff45] text-[0.84rem] transition-colors duration-1000"
+                (click)="handleProceeding()" [ngClass]="{'text-[#ffffff99]': (totalPrice !== 0)}"
+                [disabled]="(totalPrice == 0)">
                 <span>
                     Proceed to Confirmation
                 </span>
@@ -22,11 +25,10 @@
             </button>
         </section>
     </section>
-    <section class="w-[40%]">
+    <section class="w-[80%]">
         <div class="w-full h-full relative overflow-hidden">
-            <img class="w-full h-full absolute object-cover blur-[30px]"
-                src="https://occ-0-8177-64.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABcoSOi3J6hS6qoRGzoX0gnDWF9LUY6XPp3Axel-9sCPlzs1cg99mNjqkooc6k_OY0pqRtXqAJm5djr6JhIK4LFQT5guc1oIrWNRU.webp" />
-            <div class="absolute w-full h-full bg-black opacity-80"></div>
+            <img class="w-full h-full absolute object-cover blur-[45px]" [src]="event.cover_image.url" />
+            <div class="absolute w-full h-full bg-black opacity-70"></div>
         </div>
     </section>
 </section>
