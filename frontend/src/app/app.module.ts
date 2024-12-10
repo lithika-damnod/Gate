@@ -11,7 +11,8 @@ import { EventComponent } from './pages/event/event.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { FormatDatePipe } from './shared/pipes/format-date.pipe';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AuthComponent,
     MainLayoutComponent,
     BlankLayoutComponent,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     FeaturesModule,
     SharedModule,
-    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

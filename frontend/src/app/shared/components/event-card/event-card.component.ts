@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class EventCardComponent {
   @Input() src!: string;
-  @Input() href!: string;
+  @Input() routerLink!: string[];
   @Input() name!: string;
   @Input() venue!: string;
   @Input() time!: string;
