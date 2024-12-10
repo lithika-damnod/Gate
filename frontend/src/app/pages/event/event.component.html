@@ -1,12 +1,13 @@
 <section class="flex h-[calc(100%-(53.59px))] overflow-y-scroll">
     <section class="w-[58%] border-r border-[#ffffff30] overflow-y-scroll relative">
         <section>
-            <app-event-details />
+            <app-event-details [name]="event.name" [category]="event.category | capitalize"
+                [description]="event.description" [venue]="event.address.address" [time]="event.time | formatDate" />
         </section>
         <section>
-            <app-ticket-type-list-item name="Standard Admission" price="LKR 3200" [progress]="80" />
-            <app-ticket-type-list-item name="VIP Admission" price="LKR 8350" [progress]="50" />
-            <app-ticket-type-list-item name="Earlybird Tickets" price="LKR 4430" [progress]="55" />
+            <app-ticket-type-list-item *ngFor="let ticketType of event.ticket_types" [name]="ticketType.type"
+                [price]="ticketType.price"
+                [progress]="(ticketType.number_of_tickets/ticketType.max_ticket_capacity) * 100" />
         </section>
         <section
             class="flex justify-between items-center absolute w-full border-t border-[#ffffff30] bottom-0 left-0 bg-black text-[0.83rem] px-7 py-4 font-[480] mb-1">

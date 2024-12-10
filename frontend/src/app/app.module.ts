@@ -11,8 +11,9 @@ import { EventComponent } from './pages/event/event.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { FormatDatePipe } from './shared/pipes/format-date.pipe';
+import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FormatDatePipe } from './shared/pipes/format-date.pipe';
     AuthComponent,
     MainLayoutComponent,
     BlankLayoutComponent,
-    FormatDatePipe
+    FormatDatePipe,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

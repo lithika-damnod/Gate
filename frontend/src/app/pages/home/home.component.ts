@@ -12,10 +12,9 @@ export class HomeComponent implements OnInit {
 
     events: any;
     ngOnInit(): void {
-        this.events = this.eventService.getEvents().subscribe({
+        this.events = this.eventService.getEvent().subscribe({
             next: (response) => {
                 this.events = response;
-                console.log(this.events);
             },
             error: (error) => {
                 console.log("Error fetching events", error);

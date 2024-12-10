@@ -5,7 +5,6 @@ import { IconsModule } from './components/icons/icons.module';
 import { EventCardComponent } from './components/event-card/event-card.component';
 import { TimerComponent, ProgressComponent } from "./index";
 import { InputComponent } from './components/input/input.component';
-import { FormatDatePipe } from './pipes/format-date.pipe';
 
 @NgModule({
   declarations: [

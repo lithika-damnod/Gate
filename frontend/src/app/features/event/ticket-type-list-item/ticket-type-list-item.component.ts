@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 
 @Component({
-    selector: 'app-ticket-type-list-item',
-    template: `
+  selector: 'app-ticket-type-list-item',
+  template: `
     <button
         class="flex justify-between items-center w-full p-4 border-b border-[#ffffff30] px-7 font-[400] text-[#d1d5dbec] ">
         <div class="flex items-center gap-5">
@@ -12,13 +12,13 @@ import { Input } from '@angular/core';
         </div>
         <div class="flex items-center gap-8 text-[0.855rem]">
             <div class="h-8 bg-[#ffffff30] w-[1.5px]"></div>
-            <h4>{{ price }}</h4>
+            <h4>LKR {{ price }}</h4>
             <div class="h-8 bg-[#ffffff30] w-[1.5px]"></div>
             <app-progress [progress]="progress" />
         </div>
     </button>
   `,
-    standalone: false
+  standalone: false
 })
 export class TicketTypeListItemComponent {
   @Input() name!: string;
