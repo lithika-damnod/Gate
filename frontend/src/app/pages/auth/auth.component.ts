@@ -46,10 +46,10 @@ export class AuthComponent {
     else this.navigateToView(View.CREATE_ACCOUNT);
   }
 
-  private handlePasswordSubmission(): void {
+  private async handlePasswordSubmission(): Promise<void> {
     let email: string = this.form.get("email")?.value;
     let password: string = this.form.get("password")?.value;
-    let authenticated: boolean = this.authService.authenticate(email, password);
+    const authenticated = await this.authService.authenticate(email, password);
 
     if (authenticated) this.router.navigate([""]);
     else alert("authentication failed");

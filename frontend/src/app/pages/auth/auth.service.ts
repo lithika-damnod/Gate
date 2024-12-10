@@ -25,24 +25,6 @@ export class AuthService {
 
   private apiUrl: string = environment.API_URL;
 
-  /*
-  isAccountPresent(email: string): Observable<boolean> {
-    console.log("email: ", email);
-
-    return this.http.get(`${this.apiUrl}/api/account?email=${email}`).pipe(
-      map((response) => {
-        console.log(response);
-        return true;
-      }),
-      catchError((error) => {
-        console.log(error);
-        return of(false);
-      })
-    );
-  }
-  */
-
-
   async isAccountPresent(email: string): Promise<boolean> {
     try {
       const response = await lastValueFrom(
@@ -59,8 +41,22 @@ export class AuthService {
     }
   }
 
-  authenticate(email: string, password: string): boolean {
-    // TODO: Write the logic here...
+  async authenticate(email: string, password: string): Promise<boolean> {
+    try {
+      const response = await lastValueFrom(
+        this.http.post(`${this.apiUrl}/api/auth/login`, { email: email, password: password }).pipe(
+          catchError((error) => {
+            console.log(error);
+            throw error;
+          })
+        )
+      );
+      let token: string = (response as { token: string }).token;
+      sessionStorage.setItem('accessToken', token);
+      return true;
+    } catch (error) {
+      return false; // Return false if an error occurs
+    }
     return true;
   }
 
