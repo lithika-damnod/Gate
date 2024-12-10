@@ -1,23 +1,5 @@
 <div
     class="grid gap-[1px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 z-40 relative bg-[#303030] flex-wrap">
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
-    <app-event-card href="#" src="#" name="Deadpool & Wolverine" venue="Imperial 3D Cinema, Kurunegala"
-        time="Oct 18, 2024 (3:00 PM)" />
+    <app-event-card *ngFor="let event of events" [routerLink]="['event', event.id]" [src]="event.main_image.url"
+        [name]="event.name" [venue]="event.address.address" [time]="event.time | formatDate" />
 </div>
