@@ -2,25 +2,22 @@
     <app-timer size="small" />
     <div>
         <div class="flex items-center gap-2.5 mt-5">
-            <h1 class="font-[500] text-gray-200">Los Angeles Design Week 2024</h1>
+            <h1 class="font-[500] text-gray-200">{{name}}</h1>
             <div class="text-[0.7rem] font-[450] bg-[#42424280] p-0.5 px-1.5 rounded-full text-[#ffffff95]">
-                Movie
+                {{category}}
             </div>
         </div>
         <h2 class="text-[0.78rem] font-[385] text-[#d1d5dbec] leading-[1.4rem] mt-1 text-justify">
-            Laura and Massimo's relationship hangs in the balance as they try to overcome trust issues and
-            jealousy while a tenacious Nacho works to push them apart. Laura and Massimo's relationship
-            hangs in the balance as they try to overcome trust issues and jealousy while a tenacious Nacho
-            works to push them apart.
+            {{description}}
         </h2>
         <div class="flex items-center gap-4 text-[0.78rem] text-[#ffffff70] mt-6">
             <div class="flex gap-2 items-center bg-[#4242425a] p-0.5 px-2 rounded-md">
                 <span class="scale-[0.75] -rotate-45"><icon-right-arrow></icon-right-arrow></span>
-                <span>Imperial 3D Cinema, Kurunegala</span>
+                <span>{{venue}}</span>
             </div>
             <div class="flex gap-2 items-center bg-[#4242425a] p-0.5 px-2 rounded-md">
                 <span class="scale-[0.56]"><icon-calendar></icon-calendar></span>
-                <span>Oct 18, 2024 (3:00 PM)</span>
+                <span>{{time}}</span>
             </div>
         </div>
     </div>
