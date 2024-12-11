@@ -42,7 +42,7 @@ public class EventService {
         return CompletableFuture.completedFuture(eventRepository.save(event).toResponse());
     }
 
-    public void deleteEvent(Integer id) {
+    public synchronized void deleteEvent(Integer id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
 

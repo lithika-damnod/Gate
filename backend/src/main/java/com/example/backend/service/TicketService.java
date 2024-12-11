@@ -35,7 +35,7 @@ public class TicketService {
         return ticketRepository.findByCode(code).map(Ticket::toResponse).orElseThrow(() -> new EntityNotFoundException("Ticket Not Found"));
     }
 
-    public ResponseEntity<TicketResponse> registerTicket(Authentication authentication, TicketRequest request) {
+    public synchronized ResponseEntity<TicketResponse> registerTicket(Authentication authentication, TicketRequest request) {
         if (authentication == null || !authentication.isAuthenticated()) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -59,7 +59,7 @@ public class TicketService {
         return new ResponseEntity<>(null, HttpStatus.FORBIDDEN); // return error if anything goes wrong!
     }
 
-    public void deleteTicket(String code) {
+    public synchronized void deleteTicket(String code) {
         Ticket ticket = ticketRepository.findByCode(code.toUpperCase()).orElseThrow(() -> new EntityNotFoundException("Ticket Not Found"));
         ticketRepository.delete(ticket);
     }

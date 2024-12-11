@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Spring Boot Shell ###
+backend.log
+custom_logs.log
