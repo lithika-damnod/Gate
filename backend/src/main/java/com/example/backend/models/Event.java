@@ -36,6 +36,7 @@ public class Event {
     @Column(unique = true, nullable = false)
     private String name;
 
+    @Lob
     private String description;
     private LocalDateTime time;
     private Integer customerRetrievalRate;
