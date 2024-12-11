@@ -27,7 +27,7 @@ import { Subscription, interval } from 'rxjs';
         <div class="border-[0.7px] border-[#ffffff30] h-5"></div>
     </div>
     <div class="text-[0.8rem] text-gray-200" *ngIf="size === 'small'">
-        {{this.timeRemaining.hours}} Hours | {{this.timeRemaining.minutes}} Minutes | {{this.timeRemaining.seconds}} Seconds
+        <span *ngIf="this.timeRemaining.days !== '00'">{{this.timeRemaining.days}} Days |</span> {{this.timeRemaining.hours}} Hours | {{this.timeRemaining.minutes}} Minutes | {{this.timeRemaining.seconds}} Seconds
     </div>
   `,
     standalone: false
@@ -36,11 +36,11 @@ export class TimerComponent implements OnInit, OnDestroy {
     @Input() size: string = "large";
     @Input() targetDate!: Date; // Target date
 
-    timeRemaining: { days: number, hours: number; minutes: number; seconds: number; } = {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
+    timeRemaining: { days: string, hours: string; minutes: string; seconds: string; } = {
+        days: '00',
+        hours: '00',
+        minutes: '00',
+        seconds: '00'
     }
 
     private countdown$: Subscription | undefined;
@@ -63,18 +63,23 @@ export class TimerComponent implements OnInit, OnDestroy {
         if (difference > 0) {
             this.timeRemaining = this.calculateTime(difference);
         } else {
-            this.timeRemaining = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+            this.timeRemaining = { days: "00", hours: "00", minutes: "00", seconds: "00" };
             this.stopCountdown();
         }
     }
 
-    calculateTime(difference: number): { days: number; hours: number; minutes: number; seconds: number } {
+    calculateTime(difference: number): { days: string; hours: string; minutes: string; seconds: string } {
         const seconds = Math.floor((difference / 1000) % 60);
         const minutes = Math.floor((difference / (1000 * 60)) % 60);
         const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-        return { days, hours, minutes, seconds };
+        return {
+            days: days.toString().padStart(2, '0'),
+            hours: hours.toString().padStart(2, '0'),
+            minutes: minutes.toString().padStart(2, '0'),
+            seconds: seconds.toString().padStart(2, '0')
+        };
     }
 
     stopCountdown(): void {
