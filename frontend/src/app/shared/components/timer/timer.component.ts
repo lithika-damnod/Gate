@@ -51,7 +51,6 @@ export class TimerComponent implements OnInit, OnDestroy {
     startCountDown(): void {
         this.countdown$ = interval(1000).subscribe(() => {
             this.updateRemainingTime();
-            console.log("time remaining: ", this.timeRemaining);
         });
     }
 

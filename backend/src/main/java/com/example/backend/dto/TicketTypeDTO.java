@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TicketTypeDTO {
+    private Integer id;
     private String type;
     private Integer price;
     private Integer total;
