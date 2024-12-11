@@ -57,16 +57,23 @@ export class AuthService {
     } catch (error) {
       return false; // Return false if an error occurs
     }
-    return true;
   }
 
-  createAccount(email: string, password: string, first_name: string, last_name: string): boolean {
-    // TODO: Write the logic here...
-    return true;
-  }
-
-  private initiateSession(): boolean {
-    // TODO: Write the logic here...
-    return true;
+  async createAccount(email: string, password: string, first_name: string, last_name: string): Promise<boolean> {
+    try {
+      const response = await lastValueFrom(
+        this.http.post(`${this.apiUrl}/api/auth/register`, { email: email, password: password, first_name: first_name, last_name: last_name }).pipe(
+          catchError((error) => {
+            console.log(error);
+            throw error;
+          })
+        )
+      );
+      let token: string = (response as { token: string }).token;
+      sessionStorage.setItem('accessToken', token);
+      return true;
+    } catch (error) {
+      return false; // Return false if an error occurs
+    }
   }
 }

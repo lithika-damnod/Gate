@@ -55,14 +55,14 @@ export class AuthComponent {
     else alert("authentication failed");
   }
 
-  private handleCreateAccountSubmission(): void {
+  private async handleCreateAccountSubmission(): Promise<void> {
     let email: string = this.form.get("email")?.value;
     let password: string = this.form.get("new_password")?.value;
     let firstname: string = this.form.get("first_name")?.value;
     let lastname: string = this.form.get("last_name")?.value;
 
-    let account: boolean = this.authService.createAccount(email, password, firstname, lastname);
-    if (account) this.router.navigate([""]);
+    const authenticated = await this.authService.createAccount(email, password, firstname, lastname);
+    if (authenticated) this.router.navigate([""]);
     else alert("failed to create account");
   }
 }

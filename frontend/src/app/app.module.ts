@@ -39,7 +39,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [provideHttpClient(withInterceptors([
     (req, next) => {
       const token = sessionStorage.getItem('accessToken');
-      console.log("token: ", token);
       if (token) {
         const authReq = req.clone({
           headers: req.headers.set('Authorization', `Bearer ${token}`),
