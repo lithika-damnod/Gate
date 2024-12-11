@@ -6,10 +6,12 @@ import com.example.backend.models.*;
 import com.example.backend.repository.*;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,9 +36,10 @@ public class EventService {
                 .orElseThrow(() -> new EntityNotFoundException("Event Not Found"));
     }
 
-    public synchronized EventResponse addEvent(EventRequest request) {
+    @Async
+    public CompletableFuture<EventResponse> addEvent(EventRequest request) {
         Event event = map(request);
-        return eventRepository.save(event).toResponse();
+        return CompletableFuture.completedFuture(eventRepository.save(event).toResponse());
     }
 
     public synchronized void deleteEvent(Integer id) {
@@ -69,7 +72,7 @@ public class EventService {
         event.setTags(tags);
 
         List<TicketType> ticketTypes = request.getTicketTypes().stream()
-                .map(ticketType -> new TicketType(null, ticketType.getType(), ticketType.getPrice(), ticketType.getTotal(), ticketType.getMaxTicketCapacity(), ticketType.getTicketReleaseRate(), ticketType.getMaxTicketCapacity() * 20/100))
+                .map(ticketType -> new TicketType(null, ticketType.getType(), ticketType.getPrice(), ticketType.getTotal(), ticketType.getMaxTicketCapacity(), ticketType.getTicketReleaseRate(), ticketType.getMaxTicketCapacity()))
                 .toList();
         event.setTicketTypes(ticketTypes);
 

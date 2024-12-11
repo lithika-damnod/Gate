@@ -5,9 +5,11 @@ import com.example.backend.models.Vendor;
 import com.example.backend.repository.VendorRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @RequiredArgsConstructor
@@ -28,8 +30,9 @@ public class VendorService {
         return vendor;
     }
 
-    public synchronized Vendor registerVendor(VendorRequest request) {
-        return vendorRepository.save(request.map());
+    @Async
+    public CompletableFuture<Vendor> registerVendor(VendorRequest request) {
+        return CompletableFuture.completedFuture(vendorRepository.save(request.map()));
     }
 
     public synchronized Vendor updateVendor(Integer id, VendorRequest request) {

@@ -11,4 +11,5 @@ export class EventDetailsComponent {
     @Input() description = "";
     @Input() venue = "";
     @Input() time = "";
+    @Input() targetDate!: Date;
 }

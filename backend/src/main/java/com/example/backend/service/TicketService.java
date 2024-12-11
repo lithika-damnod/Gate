@@ -42,8 +42,21 @@ public class TicketService {
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Account account = accountRepository.findByEmail(userDetails.getUsername()).orElse(null);
-        TicketResponse ticket = ticketRepository.save(map(request, account)).toResponse();
-        return new ResponseEntity<>(ticket, HttpStatus.CREATED);
+
+        Ticket requestTicket = map(request, account);
+        TicketType ticketType = requestTicket.getType();
+
+        // check if the ticket type is available for booking
+        if(ticketType.getNumberOfTickets() > 0 && requestTicket.getEvent().getStatus() != Status.INACTIVE) {
+            // decrease the number of tickets within ticket type
+            ticketType.setNumberOfTickets(ticketType.getNumberOfTickets() - 1);
+            ticketTypeRepository.save(ticketType);
+
+            // save ticket booking
+            TicketResponse ticket = ticketRepository.save(requestTicket).toResponse();
+            return new ResponseEntity<>(ticket, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(null, HttpStatus.FORBIDDEN); // return error if anything goes wrong!
     }
 
     public synchronized void deleteTicket(String code) {
