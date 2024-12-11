@@ -1,0 +1,11 @@
+<div class="w-full flex justify-between items-center py-5 px-6 border-b border-[#ffffff30]">
+    <div>
+        <h1>{{ticketType}} <span *ngIf="type === 'RELEASE'" class="text-orange-200">+{{numberOfReleasedTickets}}
+                Tickets</span>
+        </h1>
+        <h2 class="text-[#ffffff80] text-[0.95rem] mb-[0.2rem]">{{eventName}}</h2>
+    </div>
+    <h3 class="text-[0.9rem]" [ngStyle]="{'color': type === 'RELEASE' ? '#fef08a' : '#fca5a5' }">
+        {{type}}
+    </h3>
+</div>

@@ -5,6 +5,7 @@ import { EventComponent } from './pages/event/event.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
+import { ConfigurationComponent } from './pages/configuration/configuration.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'event/:id', component: EventComponent },
+      { path: 'config', component: ConfigurationComponent },
     ]
   },
   {
