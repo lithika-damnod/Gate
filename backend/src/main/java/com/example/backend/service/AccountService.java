@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,11 +26,32 @@ public class AccountService {
         this.accountDTOMapper = accountDTOMapper;
     }
 
-    public List<AccountDTO> getAccount() {
-        return accountRepository.findAll()
-                .stream()
-                .map(accountDTOMapper).collect(Collectors.toList());
+    public List<AccountDTO> getAccount(String email) {
+        if(email != null) {
+            Account account = accountRepository.findByEmail(email).isPresent() ? accountRepository.findByEmail(email).get() : null;
+            if (account == null) {
+                throw new EntityNotFoundException("Account Not Found");
+            }
+
+            return Collections.singletonList(accountDTOMapper.apply(account));
+        }
+        else {
+            return accountRepository.findAll()
+                    .stream()
+                    .map(accountDTOMapper).collect(Collectors.toList());
+        }
     }
+
+    /*
+    public AccountDTO getAccount(String email) {
+        Account account = accountRepository.findByEmail(email).isPresent() ? accountRepository.findByEmail(email).get() : null;
+        if (account == null) {
+            throw new EntityNotFoundException("Account Not Found");
+        }
+
+        return accountDTOMapper.apply(account);
+    }
+     */
 
     public AccountDTO getAccount(Integer id) {
         Account account = accountRepository.findById(id).isPresent() ? accountRepository.findById(id).get() : null;
