@@ -1,0 +1,9 @@
+.password-input {
+    border: 1.6px solid #ffffff26;
+}
+
+.password-input:focus-within {
+    border: 1.6px solid #015ECC;
+    outline: 0.4px solid #015ECC;
+    box-shadow: 0 0 0 1.6px white;
+}

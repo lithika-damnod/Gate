@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-hero-search',
-  template: `
+    selector: 'app-hero-search',
+    template: `
     <div class="w-full mb-20 mr-10">
         <h2 class="text-[1.1rem] font-medium text-[#ffffffe2]">Book Your Next Event in Seconds</h2>
         <div
@@ -30,5 +30,6 @@ import { Component } from '@angular/core';
         </div>
     </div>
   `,
+    standalone: false
 })
 export class HeroSearchComponent { }

@@ -1,0 +1,24 @@
+<div class="px-7 py-5 pb-6 mt-0.5 border-b border-[#ffffff30]">
+    <app-timer size="small" />
+    <div>
+        <div class="flex items-center gap-2.5 mt-5">
+            <h1 class="font-[500] text-gray-200">{{name}}</h1>
+            <div class="text-[0.7rem] font-[450] bg-[#42424280] p-0.5 px-1.5 rounded-full text-[#ffffff95]">
+                {{category}}
+            </div>
+        </div>
+        <h2 class="text-[0.78rem] font-[385] text-[#d1d5dbec] leading-[1.4rem] mt-1 text-justify">
+            {{description}}
+        </h2>
+        <div class="flex items-center gap-4 text-[0.78rem] text-[#ffffff70] mt-6">
+            <div class="flex gap-2 items-center bg-[#4242425a] p-0.5 px-2 rounded-md">
+                <span class="scale-[0.75] -rotate-45"><icon-right-arrow></icon-right-arrow></span>
+                <span>{{venue}}</span>
+            </div>
+            <div class="flex gap-2 items-center bg-[#4242425a] p-0.5 px-2 rounded-md">
+                <span class="scale-[0.56]"><icon-calendar></icon-calendar></span>
+                <span>{{time}}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,5 +19,6 @@ import { Component } from '@angular/core';
             </div>
         </div>
   `,
+    standalone: false
 })
 export class MainHighlightCardComponent { }

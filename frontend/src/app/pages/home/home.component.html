@@ -1,17 +1,5 @@
-<app-hero-section></app-hero-section>
-<div class="grid gap-[1px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 z-40 relative border-t-[0.5px] border-[#ffffff1b] bg-[#303030] flex-wrap"
-    id="events">
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <app-event-card src="" />
-    <div
-        class="w-full h-full absolute top-0 left-0 bg-black opacity-35 hover:opacity-0 transition-opacity duration-700 cursor-pointer">
-    </div>
+<div
+    class="grid gap-[1px] grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 z-40 relative bg-[#303030] flex-wrap">
+    <app-event-card *ngFor="let event of events" [routerLink]="['event', event.id]" [src]="event.main_image.url"
+        [name]="event.name" [venue]="event.address.address" [time]="event.time | formatDate" />
 </div>

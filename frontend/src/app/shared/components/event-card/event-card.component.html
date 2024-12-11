@@ -1,10 +1,19 @@
-<div class="bg-black relative overflow-hidden">
-    <div class="w-full relative aspect-[3/5] border-b-[1px] border-[#232323] blur-[30px] bg-black">
-        <img class="absolute w-full h-full object-cover" src="{{src}}" />
+<a [routerLink]="routerLink" class="group">
+    <div class="bg-black relative overflow-hidden">
+        <div class="w-full relative aspect-[3/4] border-b-[1px] border-[#232323] blur-[45px] bg-black">
+            <img class="absolute w-full h-full object-cover opacity-70 group-hover:opacity-80 transition-opacity duration-300"
+                [src]="src" />
+        </div>
+        <div class="px-3 py-2.5 border-t border-[#303030] overflow-hidden">
+            <h2
+                class="text-[0.88rem] font-[465] text-[#ffffffdd] group-hover:text-white transition-colors duration-300 line-clamp-1">
+                {{name}}</h2>
+            <h3
+                class="text-[0.68rem] font-[420] text-[#ffffffcc] line-clamp-1 group-hover:text-white transition-colors duration-300">
+                {{venue}}</h3>
+            <h4
+                class="text-[0.68rem] font-[420] mt-2 text-[#ffffff80] line-clamp-1 group-hover:text-[#ffffff96] transition-colors duration-300">
+                {{time}}</h4>
+        </div>
     </div>
-    <div class="px-3 py-2.5 border-t border-[#303030] overflow-hidden">
-        <h2 class="text-[0.88rem] font-[465] text-[#ffffffdd] line-clamp-1">Deadpool & Wolverine</h2>
-        <h3 class="text-[0.68rem] font-[420] text-[#ffffffcc] line-clamp-1">Imperial 3D Cinema, Kurunegala</h3>
-        <h4 class="text-[0.68rem] font-[420] mt-2 text-[#ffffff80] line-clamp-1">Oct 18, 2024 (3:00 PM)</h4>
-    </div>
-</div>
+</a>
