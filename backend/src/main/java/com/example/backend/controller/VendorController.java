@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.EventResponse;
 import com.example.backend.dto.VendorRequest;
 import com.example.backend.models.Vendor;
 import com.example.backend.service.VendorService;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("api/vendor")
@@ -24,7 +26,8 @@ public class VendorController {
 
     @PostMapping
     public ResponseEntity<Vendor> registerVendor(@RequestBody @Valid VendorRequest request) {
-        return ResponseEntity.ok(vendorService.registerVendor(request));
+        CompletableFuture<Vendor> response = vendorService.registerVendor(request);
+        return ResponseEntity.ok(response.join());
     }
 
     @GetMapping("{id}")
