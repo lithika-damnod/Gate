@@ -28,6 +28,9 @@ export class TicketsService {
       if (error.status === 401) {
         this.router.navigate(['/auth']);
       }
+      else if (error.status === 403) {
+        console.log("ticket type is no longer available", error);
+      }
       else {
         console.log("error occured while booking ticket", error);
       }

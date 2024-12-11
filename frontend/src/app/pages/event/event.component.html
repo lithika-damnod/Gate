@@ -8,8 +8,8 @@
         <section>
             <app-ticket-type-list-item *ngFor="let ticketType of event.ticket_types; let index = index"
                 [name]="ticketType.type" [price]="ticketType.price"
-                [progress]="(ticketType.number_of_tickets/ticketType.max_ticket_capacity) * 100" [key]="index"
-                [onCheckboxChange]="handleChecked" />
+                [progress]="((ticketType.max_ticket_capacity-ticketType.number_of_tickets)/ticketType.max_ticket_capacity) * 100"
+                [key]="index" [onCheckboxChange]="handleChecked" />
         </section>
         <section
             class="flex justify-between items-center absolute w-full border-t border-[#ffffff30] bottom-0 left-0 bg-black text-[0.83rem] px-7 py-4 font-[480] mb-1">
