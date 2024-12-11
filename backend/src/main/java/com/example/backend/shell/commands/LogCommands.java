@@ -2,7 +2,6 @@ package com.example.backend.shell.commands;
 
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
-import org.springframework.context.event.EventListener;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
@@ -48,12 +47,12 @@ public class LogCommands {
     }
 
     private static String setLogMessageColor(String log) {
-        if (log.contains("ERROR")) {
-            return new AttributedString(log, AttributedStyle.DEFAULT.foreground(AttributedStyle.RED)).toAnsi();
-        } else if (log.contains("WARN")) {
+        if (log.contains("BUY")) {
+            return new AttributedString(log, AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN)).toAnsi();
+        } else if (log.contains("RELEASE")) {
             return new AttributedString(log, AttributedStyle.DEFAULT.foreground(AttributedStyle.YELLOW)).toAnsi();
         } else {
-            return new AttributedString(log, AttributedStyle.DEFAULT.foreground(AttributedStyle.GREEN)).toAnsi();
+            return new AttributedString(log, AttributedStyle.DEFAULT.foreground(AttributedStyle.RED)).toAnsi();
         }
     }
 
