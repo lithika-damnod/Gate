@@ -2,7 +2,8 @@
     <section class="w-full border-r border-[#ffffff30] overflow-y-scroll relative">
         <section>
             <app-event-details [name]="event.name" [category]="event.category | capitalize"
-                [description]="event.description" [venue]="event.address.address" [time]="event.time | formatDate" />
+                [description]="event.description" [venue]="event.address.address" [time]="event.time | formatDate"
+                [targetDate]="targetDate" />
         </section>
         <section>
             <app-ticket-type-list-item *ngFor="let ticketType of event.ticket_types; let index = index"
