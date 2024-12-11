@@ -52,7 +52,7 @@ public class Ticket {
                 .code(this.code)
                 .eventId(this.event.getId())
                 .accountId(this.account.getId())
-                .type(new TicketTypeDTO(this.type.getType(), this.type.getPrice(), this.type.getTotal(), this.type.getMaxTicketCapacity(), this.type.getTicketReleaseRate(), this.type.getNumberOfTickets()))
+                .type(new TicketTypeDTO(this.type.getId(), this.type.getType(), this.type.getPrice(), this.type.getTotal(), this.type.getMaxTicketCapacity(), this.type.getTicketReleaseRate(), this.type.getNumberOfTickets()))
                 .purchasedDate(this.purchasedDate)
                 .build();
     }
