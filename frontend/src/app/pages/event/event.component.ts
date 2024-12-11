@@ -1,3 +1,4 @@
+import { TicketsService } from './../../shared/services/tickets.service';
 import { EventsService } from './../../shared/services/events.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     standalone: false
 })
 export class EventComponent implements OnInit {
-    constructor(private eventService: EventsService, private route: ActivatedRoute, private router: Router) { }
+    constructor(private eventService: EventsService, private ticketsService: TicketsService, private route: ActivatedRoute, private router: Router) { }
     id: string = "";
     event: any;
     targetDate!: Date;
@@ -45,7 +46,17 @@ export class EventComponent implements OnInit {
         }
     }
 
-    handleProceeding(): void { // TODO:
-        console.log("proceeding");
+    async handleProceeding(): Promise<void> {
+        let ticket_type_id: number = this.event.ticket_types[this.selected ?? 0].id
+        const response = await this.ticketsService.bookTicket(parseInt(this.id), ticket_type_id);
+        if (response === null) console.log("failed to book ticket");
+        else {
+            alert(`
+                Ticket Booked Successfully 🎉
+                🎟️ Event: ${this.event.name} 
+                🎟️ Type: ${response.type.type}
+                🎟️ Code: ${response.code}
+            `);
+        }
     }
 }
