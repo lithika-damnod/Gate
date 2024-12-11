@@ -12,6 +12,7 @@ export class EventComponent implements OnInit {
     constructor(private eventService: EventsService, private route: ActivatedRoute, private router: Router) { }
     id: string = "";
     event: any;
+    targetDate!: Date;
 
     ngOnInit(): void {
         this.route.paramMap.subscribe(params => {
@@ -21,6 +22,8 @@ export class EventComponent implements OnInit {
         this.event = this.eventService.getEvent(parseInt(this.id)).subscribe({
             next: (response) => {
                 this.event = response;
+                this.targetDate = new Date(this.event.time);
+                console.log(this.targetDate);
             },
             error: (error) => {
                 console.log("Error fetching events", error);
