@@ -5,11 +5,13 @@ import com.example.backend.dto.EventResponse;
 import com.example.backend.repository.EventRepository;
 import com.example.backend.service.EventService;
 import jakarta.validation.Valid;
+import jdk.jshell.SourceCodeAnalysis;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("api/event")
@@ -31,7 +33,8 @@ public class EventController {
 
     @PostMapping
     public ResponseEntity<EventResponse> addEvent(@Valid @RequestBody EventRequest request) {
-        return ResponseEntity.ok(eventService.addEvent(request));
+        CompletableFuture<EventResponse> response = eventService.addEvent(request);
+        return ResponseEntity.ok(response.join());
     }
 
     @DeleteMapping("{id}")
