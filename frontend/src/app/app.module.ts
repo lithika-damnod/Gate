@@ -15,6 +15,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { FormatDatePipe } from './shared/pipes/format-date.pipe';
 import { CapitalizePipe } from './shared/pipes/capitalize.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ConfigurationComponent } from './pages/configuration/configuration.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BlankLayoutComponent,
     FormatDatePipe,
     CapitalizePipe,
+    ConfigurationComponent,
   ],
   imports: [
     BrowserModule,

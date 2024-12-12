@@ -1,0 +1,26 @@
+<div class="p-10 border-b border-[#ffffff30]">
+    <div class="w-full flex justify-between items-center">
+        <div>
+            <h2 class="text-[#ffffff80] text-[0.95rem] mb-[0.2rem]">{{event.vendor.name}}</h2>
+            <h1>{{event.name}}</h1>
+        </div>
+        <button class="bg-[#7512126a] p-1 px-3 rounded-full text-[0.92rem] border border-[#ffffff2e]">Stop</button>
+    </div>
+    <table>
+        <tr class="text-[0.98rem]" *ngFor="let ticketType of event.ticket_types;">
+            <td class="text-[#ffffffcc]">{{ticketType.number_of_tickets}}/{{ticketType.max_ticket_capacity}}</td>
+            <td>{{ticketType.type}}</td>
+            <td>{{ticketType.total}} Tickets</td>
+            <td>{{ticketType.release_rate}} / <span class="text-[#ffffff99] text-[0.9rem]">User Retrieval Rate</span>
+            </td>
+            <td class="text-[0.95rem]">LKR {{ticketType.price}}</td>
+        </tr>
+        <tr class="text-[0.98rem]">
+            <td class="text-[#ffffffcc]">100/200</td>
+            <td>Standard Ticket</td>
+            <td>1000 Tickets</td>
+            <td>10 / <span class="text-[#ffffff99] text-[0.9rem]">User Retrieval Rate</span></td>
+            <td class="text-[0.95rem]">LKR 2300</td>
+        </tr>
+    </table>
+</div>
