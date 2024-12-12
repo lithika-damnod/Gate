@@ -2,14 +2,19 @@ package com.example.backend.service;
 
 import com.example.backend.dto.EventRequest;
 import com.example.backend.dto.EventResponse;
+import com.example.backend.dto.scheduler.BuyResponse;
+import com.example.backend.dto.scheduler.WebSocketEventResponse;
 import com.example.backend.models.*;
 import com.example.backend.repository.*;
+import com.example.backend.websocket.CustomWebSocketHandler;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
@@ -22,6 +27,7 @@ public class EventService {
     private final AddressRepository addressRepository;
     private final TagRepository tagRepository;
     private final TicketTypeRepository ticketTypeRepository;
+    private final CustomWebSocketHandler customWebSocketHandler;
 
     public List<EventResponse> getEvent() {
         return eventRepository.findAll()
@@ -39,7 +45,16 @@ public class EventService {
     @Async
     public CompletableFuture<EventResponse> addEvent(EventRequest request) {
         Event event = map(request);
-        return CompletableFuture.completedFuture(eventRepository.save(event).toResponse());
+        Event saved = eventRepository.save(event);
+
+        // send websocket updates
+        Map<String, Object> returnMsg = new HashMap<>();
+        returnMsg.put("event", WebSocketEventResponse.builder()
+                .eventId(saved.getId())
+                .eventName(saved.getName())
+                .build());
+        customWebSocketHandler.broadcast(returnMsg);
+        return CompletableFuture.completedFuture(saved.toResponse());
     }
 
     public synchronized void deleteEvent(Integer id) {

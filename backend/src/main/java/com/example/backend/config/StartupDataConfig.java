@@ -77,7 +77,7 @@ public class StartupDataConfig {
 
                 List<Map<String, Object>> ticketTypesObject = (List<Map<String, Object>>) event.get("ticket_types");
                 List<TicketType> ticketTypes = ticketTypesObject.stream()
-                        .map(ticketType -> new TicketType(null, ticketType.get("type").toString(), (Integer) ticketType.get("price"), (Integer) ticketType.get("total"), (Integer) ticketType.get("max_ticket_capacity"), (Integer) ticketType.get("ticket_release_rate"), ((Integer) ticketType.get("max_ticket_capacity")) * 20/100))
+                        .map(ticketType -> new TicketType(null, ticketType.get("type").toString(), (Integer) ticketType.get("price"), (Integer) ticketType.get("total"), (Integer) ticketType.get("max_ticket_capacity"), (Integer) ticketType.get("ticket_release_rate"), (Integer) ticketType.get("max_ticket_capacity")))
                         .toList();
                 eventObject.setTicketTypes(ticketTypes);
 
