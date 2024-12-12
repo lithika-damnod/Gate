@@ -2,11 +2,14 @@ package com.example.backend.service;
 
 import com.example.backend.dto.TicketRequest;
 import com.example.backend.dto.TicketResponse;
+import com.example.backend.dto.scheduler.BuyResponse;
 import com.example.backend.models.*;
 import com.example.backend.repository.AccountRepository;
 import com.example.backend.repository.EventRepository;
 import com.example.backend.repository.TicketRepository;
 import com.example.backend.repository.TicketTypeRepository;
+import com.example.backend.shell.commands.LogCommands;
+import com.example.backend.websocket.CustomWebSocketHandler;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,8 +18,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +31,7 @@ public class TicketService {
     private final EventRepository eventRepository;
     private final TicketTypeRepository ticketTypeRepository;
     private final AccountRepository accountRepository;
+    private final CustomWebSocketHandler customWebSocketHandler;
 
     public List<TicketResponse> getTicket() {
         return ticketRepository.findAll().stream().map(Ticket::toResponse).collect(Collectors.toList());
@@ -54,6 +60,22 @@ public class TicketService {
 
             // save ticket booking
             TicketResponse ticket = ticketRepository.save(requestTicket).toResponse();
+
+
+            // send updates
+            Event event = eventRepository.findById(ticket.getEventId()).orElseThrow();
+            // websocket
+            Map<String, Object> returnMsg = new HashMap<>();
+            returnMsg.put("buy", BuyResponse.builder()
+                            .eventId(event.getId())
+                            .eventName(event.getName())
+                            .ticketTypeId(ticketType.getId())
+                            .ticketType(ticketType.getType())
+                    .build());
+            customWebSocketHandler.broadcast(returnMsg);
+
+            // log
+            LogCommands.logMessage("[BUY] Type: " + ticketType.getType() + " Event: " + event.getName() + " (Id: " + ticket.getEventId() + ")");
             return new ResponseEntity<>(ticket, HttpStatus.CREATED);
         }
         return new ResponseEntity<>(null, HttpStatus.FORBIDDEN); // return error if anything goes wrong!
