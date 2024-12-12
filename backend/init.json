@@ -1,0 +1,197 @@
+[
+  {
+    "name": "Microsoft Corporation",
+    "address": "Redmond, USA",
+    "events": [
+      {
+        "name": "Microsoft Build 2024",
+        "description": "Microsoft Build is the ultimate developer conference where creators, coders, and innovators come together to explore the future of technology. Dive into the world of Azure, AI, and cloud computing while discovering cutting-edge tools and platforms. Developers will engage in workshops, attend keynotes, and gain exclusive insights into Microsoft's latest technologies. This year promises an unparalleled opportunity to learn, network, and shape the future of tech.",
+        "time": "2025-05-20T09:00:00",
+        "customer_retrieval_rate": 95,
+        "address": "Seattle Convention Center, Seattle, USA",
+        "main_image_path": "https://i.ebayimg.com/images/g/EVUAAOSwPf5fOV9D/s-l1600.webp",
+        "cover_image_path": "https://tgemm.home.blog/wp-content/uploads/2020/08/ratched_xxlg7176471969840512161.jpg",
+        "category": "CONFERENCE",
+        "ticket_types": [
+          {
+            "type": "Early Bird Ticket",
+            "price": 3600,
+            "total": 1000,
+            "max_ticket_capacity": 100,
+            "ticket_release_rate": 25
+          },
+          {
+            "type": "Standard Ticket",
+            "price": 2000,
+            "total": 3000,
+            "max_ticket_capacity": 200,
+            "ticket_release_rate": 75
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Microsoft",
+          "Azure",
+          "AI",
+          "Cloud Computing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Tesla, Inc.",
+    "address": "Palo Alto, USA",
+    "events": [
+      {
+        "name": "Tesla Investor Day 2024",
+        "description": "Tesla Investor Day offers a behind-the-scenes look at the groundbreaking technologies and visionary innovations shaping the future of the automotive industry. With updates on electric vehicles, autonomous driving, and sustainability initiatives, this event promises an exciting glimpse into Tesla's strategic plans. Investors, enthusiasts, and tech visionaries will gather to witness Tesla's latest milestones and long-term goals in the world of clean energy and transportation.",
+        "time": "2025-06-15T09:00:00",
+        "customer_retrieval_rate": 90,
+        "address": "Tesla Gigafactory, Austin, USA",
+        "main_image_path": "https://i.ebayimg.com/images/g/EVUAAOSwPf5fOV9D/s-l1600.webp",
+        "cover_image_path": "https://tgemm.home.blog/wp-content/uploads/2020/08/ratched_xxlg7176471969840512161.jpg",
+        "category": "EXHIBITION",
+        "ticket_types": [
+          {
+            "type": "VIP Access",
+            "price": 5000,
+            "total": 200,
+            "max_ticket_capacity": 10,
+            "ticket_release_rate": 10
+          },
+          {
+            "type": "General Admission",
+            "price": 2000,
+            "total": 1000,
+            "max_ticket_capacity": 100,
+            "ticket_release_rate": 50
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Tesla",
+          "EV Technology",
+          "Autonomous Vehicles",
+          "Innovation"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Apple Inc.",
+    "address": "Cupertino, USA",
+    "events": [
+      {
+        "name": "Apple WWDC 2024",
+        "description": "Apple's Worldwide Developers Conference is an iconic event where developers, tech enthusiasts, and Apple fans converge to learn about the latest advancements in iOS, macOS, and other platforms. With a host of exciting announcements, live demos, and interactive sessions, WWDC provides a unique opportunity to engage directly with Apple engineers and leaders. The event is a must-attend for anyone passionate about innovation and Apple's evolving ecosystem.",
+        "time": "2025-03-05T10:00:00",
+        "customer_retrieval_rate": 97,
+        "address": "Apple Park, Cupertino, USA",
+        "main_image_path": "https://i.ebayimg.com/images/g/EVUAAOSwPf5fOV9D/s-l1600.webp",
+        "cover_image_path": "https://tgemm.home.blog/wp-content/uploads/2020/08/ratched_xxlg7176471969840512161.jpg",
+        "category": "CONFERENCE",
+        "ticket_types": [
+          {
+            "type": "VIP Admission",
+            "price": 7000,
+            "total": 100,
+            "max_ticket_capacity": 20,
+            "ticket_release_rate": 5
+          },
+          {
+            "type": "Standard Ticket",
+            "price": 1600,
+            "total": 5000,
+            "max_ticket_capacity": 120,
+            "ticket_release_rate": 100
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Apple",
+          "iOS",
+          "macOS",
+          "Software Development"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Marvel Studios",
+    "address": "Burbank, California, USA",
+    "events": [
+      {
+        "name": "Avengers Secret Wars Premiere",
+        "description": "The red carpet rolls out for the world premiere of Avengers: Secret Wars, the next chapter in Marvel's legendary saga. Join the stars, creators, and fans as the highly anticipated film makes its debut with an exclusive screening and fanfare. Witness the excitement of this epic cinematic event, where superheroes, drama, and breathtaking visuals promise to captivate audiences like never before.",
+        "time": "2025-05-01T18:00:00",
+        "customer_retrieval_rate": 80,
+        "address": "Dolby Theatre, Los Angeles, USA",
+        "main_image_path": "https://i.ebayimg.com/images/g/EVUAAOSwPf5fOV9D/s-l1600.webp",
+        "cover_image_path": "https://tgemm.home.blog/wp-content/uploads/2020/08/ratched_xxlg7176471969840512161.jpg",
+        "category": "MOVIE",
+        "ticket_types": [
+          {
+            "type": "VIP Access",
+            "price": 9500,
+            "total": 200,
+            "max_ticket_capacity": 20,
+            "ticket_release_rate": 10
+          },
+          {
+            "type": "Standard Admission",
+            "price": 3000,
+            "total": 1000,
+            "max_ticket_capacity": 100,
+            "ticket_release_rate": 30
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Marvel",
+          "Avengers",
+          "Premiere",
+          "Superhero"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Netflix",
+    "address": "Los Gatos, California, USA",
+    "events": [
+      {
+        "name": "Stranger Things Season 5",
+        "description": "Step into the Upside Down at the Stranger Things Season 5 Launch Party, a night filled with mystery, excitement, and nostalgia. Fans will enjoy exclusive sneak peeks, meet cast members, and experience the magic behind the scenes of one of Netflix's most iconic series. With live music, themed decorations, and unforgettable surprises, this event will immerse you in the world of Hawkins like never before.",
+        "time": "2025-07-01T19:00:00",
+        "customer_retrieval_rate": 96,
+        "address": "Hollywood Palladium, Los Angeles, USA",
+        "main_image_path": "https://i.ebayimg.com/images/g/EVUAAOSwPf5fOV9D/s-l1600.webp",
+        "cover_image_path": "https://tgemm.home.blog/wp-content/uploads/2020/08/ratched_xxlg7176471969840512161.jpg",
+        "category": "MOVIE",
+        "ticket_types": [
+          {
+            "type": "General Admission",
+            "price": 5200,
+            "total": 1500,
+            "max_ticket_capacity": 100,
+            "ticket_release_rate": 50
+          },
+          {
+            "type": "VIP Experience",
+            "price": 8800,
+            "total": 300,
+            "max_ticket_capacity": 50,
+            "ticket_release_rate": 20
+          }
+        ],
+        "status": "ACTIVE",
+        "tags": [
+          "Netflix",
+          "Stranger Things",
+          "TV Series",
+          "Launch Party"
+        ]
+      }
+    ]
+  }
+]

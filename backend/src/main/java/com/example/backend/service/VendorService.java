@@ -35,7 +35,7 @@ public class VendorService {
         return CompletableFuture.completedFuture(vendorRepository.save(request.map()));
     }
 
-    public Vendor updateVendor(Integer id, VendorRequest request) {
+    public synchronized Vendor updateVendor(Integer id, VendorRequest request) {
 
         if(request.getName() == null && request.getAddress() == null) throw new IllegalArgumentException("Invalid Request");
 
@@ -46,7 +46,7 @@ public class VendorService {
         return vendorRepository.save(vendor);
     }
 
-    public void deleteVendor(Integer id) {
+    public synchronized void deleteVendor(Integer id) {
         Vendor vendor = vendorRepository.findById(id).isPresent() ? vendorRepository.findById(id).get() : null;
         if(vendor == null) throw new EntityNotFoundException("Vendor Not Found");
 

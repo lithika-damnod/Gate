@@ -27,7 +27,7 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public synchronized AuthenticationResponse register(RegisterRequest request) {
 
         // save the account
         Account account = request.map(passwordEncoder.encode(request.getPassword()));
