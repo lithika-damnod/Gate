@@ -2,12 +2,25 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../../../environment/environment';
 
+interface WebSocketMessage {
+  buy?: BuyMessage;
+  release?: any;
+  event?: any;
+}
+interface BuyMessage {
+  eventId: number;
+  eventName: string;
+  ticketTypeId: number;
+  ticketType: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
   private socket!: WebSocket;
-  private subject = new Subject<any>();
+  private subject = new Subject<WebSocketMessage>();
   private url = `${environment.API_URL}/ws/stream`;
 
   connect(): void {
@@ -19,8 +32,13 @@ export class WebSocketService {
 
       // listen to incoming messages
       this.socket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        this.subject.next(data);
+        try {
+          const data: WebSocketMessage = JSON.parse(event.data);
+          this.subject.next(data);
+        }
+        catch (error) {
+          console.error('Error parsing WebSocket message:', error);
+        }
       };
 
       // if an error is thrown
@@ -35,7 +53,7 @@ export class WebSocketService {
     }
   }
 
-  getMessages(): Observable<any> {
+  getMessages(): Observable<WebSocketMessage> {
     return this.subject.asObservable();
   }
 
@@ -46,4 +64,3 @@ export class WebSocketService {
     }
   }
 }
-
