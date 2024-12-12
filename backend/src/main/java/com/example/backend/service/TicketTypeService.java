@@ -1,7 +1,9 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.scheduler.ReleaseResponse;
 import com.example.backend.models.TicketType;
 import com.example.backend.repository.TicketTypeRepository;
+import com.example.backend.shell.commands.LogCommands;
 import com.example.backend.websocket.CustomWebSocketHandler;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -26,16 +28,6 @@ public class TicketTypeService {
             int releaseRate = ticketType.getTicketReleaseRate();
             int maxTicketCapacity =  ticketType.getMaxTicketCapacity();
 
-            /*
-            if(pool < total){
-                int ticketsToRelease = Math.min(releaseRate, maxTicketCapacity - pool);
-                if((ticketsToRelease+pool) > total) {
-                    ticketsToRelease = total;
-                }
-                ticketType.setNumberOfTickets(pool + ticketsToRelease);
-            }
-            */
-
             if(pool < maxTicketCapacity && total > 0) { // if total is zero there's nothing possible to be done
                 int nTicketsToRelease = Math.min(releaseRate, maxTicketCapacity - pool);
                 if(total >= nTicketsToRelease) { // there's enough tickets left to be added to the pool
@@ -51,12 +43,22 @@ public class TicketTypeService {
                 ticketType.setTotal(total);
                 TicketType saved = ticketTypeRepository.save(ticketType);
 
-                // releasing
-                Map<String, Object> returnMsg = new HashMap<>();
-                returnMsg.put("release", saved);
-                customWebSocketHandler.broadcast(returnMsg);
-            }
+                // releasing websocket
+                ReleaseResponse releaseResponse = ReleaseResponse.builder()
+                        .id(saved.getId())
+                        .ticketsReleased(nTicketsToRelease)
+                        .pool(saved.getNumberOfTickets())
+                        .total(saved.getTotal())
+                        .maxTicketCapacity(saved.getMaxTicketCapacity())
+                        .build();
 
+                Map<String, Object> returnMsg = new HashMap<>();
+                returnMsg.put("release", releaseResponse);
+                customWebSocketHandler.broadcast(returnMsg);
+
+                // releasing log
+                LogCommands.logMessage("[RELEASE] " + nTicketsToRelease + " Tickets were released on Ticket Type Pool: " + ticketType.getType() + " (Id: " + ticketType.getId() + ")");
+            }
         }
     }
 }
